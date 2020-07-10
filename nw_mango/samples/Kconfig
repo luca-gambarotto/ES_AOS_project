@@ -1,0 +1,81 @@
+
+config SAMPLES_GIF_ANIMATION
+  bool "GIF Animation"
+  default y
+  ---help---
+  Sample application scaling and applying a filter to an animated GIF picture
+
+config SAMPLES_GIF_FIFO
+  bool "GIF FIFO"
+  default y
+  ---help---
+  Sample application scaling an animated GIF picture using the FIFO mode buffers
+
+config SAMPLES_MATRIX_MULTIPLICATION
+  bool "Matrix Multiplication (PEAK/GN)"
+  default y
+  ---help---
+  Sample application performing multiplication between two matrices with size
+  specified as argument (processors: GN and PEAK)
+
+config SAMPLES_MATRIX_MULTIPLICATION_NUP
+  depends on LIBMANGO_NUPLUS
+  bool "Matrix Multiplication (NU+)"
+  default n
+  ---help---
+  Sample application performing matrix multiplication (for NU+ processors only)
+
+config SAMPLES_MATRIX_MULTIPLICATION_MT
+  depends on MANGO_HN_PROTOTYPE
+  bool "Matrix Multiplication (multi-target)"
+  default y
+  ---help---
+  Sample application performing multiplication between two matrices with size
+  specified as argument (processors: PEAK, NU+ and GN)
+
+config SAMPLES_MATRIX_MULTIPLICATION_CPP
+  bool "Matrix Multiplication CPP"
+  default y
+  ---help---
+  Sample application performing multiplication between two matrices with size
+  specified as argument using MANGO C++ APIs
+
+config SAMPLES_MATRIX_MULTIPLICATION_OCL
+  bool "Matrix Multiplication OpenCL"
+  default y
+  ---help---
+  Sample OpenCL application performing multiplication between two matrices with size
+  specified as argument using MANGO C++ APIs
+
+config SAMPLES_NW_OPENCL
+  bool "Needleman-Wunsch OpenCL"
+  default y
+  ---help---
+  Sample OpenCL application implementing the Needleman-Wunsch algorithm 
+
+config SAMPLES_PATHFINDER
+  bool "Pathfinder (BeeR)"
+  default y
+  ---help---
+  Sample BeeR application for searching the path with the lowest accumulated
+  weight from the bottom to the top of a matrix
+
+config SAMPLES_SYNC
+  bool "Sync"
+  default y
+  ---help---
+  Sample application to test basic platform synchronization mechanisms
+
+config SAMPLES_PATHFINDER
+  bool "Pathfinder (BeeR)"
+  default y
+  ---help---
+  Sample BeeR application for searching the path with the lowest accumulated
+  weight from the bottom to the top of a matrix
+
+#config SAMPLES_EVENT_DEMO
+#  bool "Event Demo"
+#  default y
+#  ---help---
+#  Sample application to show synchronization with events
+

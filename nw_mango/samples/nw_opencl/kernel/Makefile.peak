@@ -1,0 +1,95 @@
+KERNEL_PATH            = ./
+KERNEL_SRC_PATH        = ./
+KERNEL_INCLUDE_PATH    = ./
+
+KERNEL_SRC_FILES       = main.c nw_kernel.c
+
+MANGO_ROOT            ?= /opt/mango
+PEAK_KERNEL_TOOLS      = $(MANGO_ROOT)/bin
+PEAK_SDK_PATH          = $(MANGO_ROOT)
+
+MANGO_DEV_INCLUDE_DIR  = $(MANGO_ROOT)/include/libmango/dev
+MANGO_DEV_LIB_DIR      = $(MANGO_ROOT)/lib
+
+PEAK_INCLUDE_DIR       := $(PEAK_SDK_PATH)/include/peakos
+PEAK_LIB_DIR           := $(PEAK_SDK_PATH)/lib
+
+LIBS                   = -lmango-dev-peak -lpeak
+
+INCLUDE_DIR            := -I$(MANGO_DEV_INCLUDE_DIR) -I$(PEAK_INCLUDE_DIR) -I$(KERNEL_INCLUDE_PATH) \
+			  -I$(MANGO_ROOT)/include/libmango
+LIB_DIR                := -L$(MANGO_DEV_LIB_DIR) -L$(PEAK_LIB_DIR)
+
+VPATH                  := output $(KERNEL_SRC_PATH)
+
+# PEAK defines ----------------------------------------------------
+PEAK_COMPILER_PATH?=$(MANGO_ROOT)/usr/local/mipsel-unknown-gappeak/bin/
+PEAK_CC=mipsel-unknown-gappeak-gcc
+PEAK_CXX=mipsel-unknown-gappeak-g++
+PEAK_OBJCOPY=mipsel-unknown-gappeak-objcopy
+PEAK_OBJDUMP=mipsel-unknown-gappeak-objdump
+PEAK_READELF=mipsel-unknown-gappeak-readelf
+
+#Set up cross-compiler flags
+PEAK_ARCH_FLAGS=-msoft-float #-DTARGET_V485T
+PEAK_BARE_METAL_FLAGS=-pedantic -Wall
+PEAK_LINKER_FLAGS=-static -T $(PEAK_KERNEL_TOOLS)/newlinker.ld #-Wl,--strip-all
+PEAK_OPTIM_FLAGS=-DVERBOSE_DBG -O3
+PEAK_CFLAGS=-g -DUPV_HN_ENABLED
+# ------------------------------------------------------------------
+
+C_FILES   = $(filter %.c, $(KERNEL_SRC_FILES))
+CC_FILES  = $(filter %.cc, $(KERNEL_SRC_FILES))
+CPP_FILES = $(filter %.cpp, $(KERNEL_SRC_FILES))
+
+OBJ_FILES = $(C_FILES:.c=.o)
+OBJ_FILES += $(CC_FILES:.cc=.o)
+OBJ_FILES += $(CPP_FILES:.cpp=.o)
+
+OUTPUT_DIR = output memory.out
+
+.PHONY: clean all generate_image generate_image_sim build-dir
+
+all : build-dir memory.dump generate_image
+
+%.o : %.cpp
+	$(PEAK_COMPILER_PATH)$(PEAK_CXX) ${PEAK_OPTIM_FLAGS} ${PEAK_ARCH_FLAGS} ${PEAK_BARE_METAL_FLAGS} $(PEAK_CFLAGS) $(INCLUDE_DIR) -std=c++11 -c -o $@ $<
+
+%.o : %.cc
+	$(PEAK_COMPILER_PATH)$(PEAK_CXX) ${PEAK_OPTIM_FLAGS} ${PEAK_ARCH_FLAGS} ${PEAK_BARE_METAL_FLAGS} $(PEAK_CFLAGS) $(INCLUDE_DIR) -std=c++11 -c -o $@ $<
+
+%.o : %.c
+	$(PEAK_COMPILER_PATH)$(PEAK_CC) ${PEAK_OPTIM_FLAGS} ${PEAK_ARCH_FLAGS} ${PEAK_BARE_METAL_FLAGS} $(PEAK_CFLAGS) $(INCLUDE_DIR) -std=c99 -c -o $@ $<
+
+memory.readelf: memory.elf
+	$(PEAK_COMPILER_PATH)$(PEAK_READELF) -a $< > $@
+
+memory.elf: $(OBJ_FILES)
+	$(PEAK_COMPILER_PATH)$(PEAK_CC) ${PEAK_OPTIM_FLAGS} ${PEAK_ARCH_FLAGS} ${PEAK_BARE_METAL_FLAGS} ${PEAK_LINKER_FLAGS} $(LIB_DIR) -o $@ $^ $(LIBS)
+
+memory.dump: memory.elf
+	$(PEAK_COMPILER_PATH)$(PEAK_OBJDUMP) -D -S $< > $@
+
+generate_image: memory.data.fpga.datafile
+
+memory.data.fpga.datafile: memory.readelf
+	$(PEAK_KERNEL_TOOLS)/generate_image.sh nosim $(MANGO_ROOT)
+
+generate_image_sim: memory.data.sim.coe
+
+memory.data.sim.coe: memory.readelf
+	$(PEAK_KERNEL_TOOLS)/generate_image.sh sim $(MANGO_ROOT)
+
+build-dir: $(OUTPUT_DIR)
+
+$(OUTPUT_DIR): 
+	mkdir $@
+
+clean :
+	rm -f *.o *.elf *.readelf *.dump
+	rm -rf memory.out/
+	rm -rf output/
+
+depend:
+
+
