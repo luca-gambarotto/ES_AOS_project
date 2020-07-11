@@ -1,0 +1,314 @@
+luca@luca-VirtualBox:/opt/mango/usr/bin$ ./nw_opencl 16 5
+Initializing OpenCL device...OpenCL platforms found: n=1
+OpenCL platform 0: Mango Platform
+[DBG] Using Log4CppLogger configuration file [/opt/mango/etc/libmango/libmango.conf]
+15:20:08,864 - INFO   actrl           : [nw_sample] controller created
+15:20:08,864 - DEBUG  rtl             : Barbeque RTLIB (ver. HEAD-HASH-NOTFOUND)
+
+15:20:08,864 - DEBUG  rtl             : Built: Apr 11 2020 11:13:23
+
+15:20:08,864 - INFO   rtl.ocl         : OpenCL runtime: /usr/lib/x86_64-linux-gnu/libOpenCL.so
+15:20:08,867 - INFO   rtl.ocl         : OCL: nr. of available platform(s): 1
+15:20:08,867 - DEBUG  rtl.ocl         : OCL: OpenCL devices found: 1 [descriptors size: 8]
+15:20:08,867 - DEBUG  rtl.ocl         : OCL: Devices descriptors @0x56102e2b0680
+15:20:08,867 - DEBUG  rtl.ocl         :      Device #00 @0x56102e2afbb0
+15:20:08,867 - INFO   rpc             : BBQUE_RTLIB_OPTS is not set
+15:20:08,867 - DEBUG  rpc             : Using FIFO RPC channel
+15:20:08,867 - DEBUG  rpc             : Building FIFO RPC channel
+15:20:08,867 - DEBUG  rpc             : Initialize: pid=16954 name=nw_sample tid=16954, ppid=15632 [restore_pid=0]
+15:20:08,867 - DEBUG  rpc             : _Init: spawning channel thread...
+15:20:08,867 - DEBUG  rpc             : ChannelTrd [PID: 16955] CREATED
+15:20:08,867 - INFO   rpc             : _Init: application fifo = 16954_nw_sample
+15:20:08,867 - DEBUG  rpc             : ChannelSetup: initialization...
+15:20:08,867 - DEBUG  rpc             : ChannelSetup: opening daemon FIFO [/opt/mango/bosp/var/rpc_fifo]...
+15:20:08,867 - DEBUG  rpc             : ChannelSetup: daemon FIFO open
+15:20:08,867 - DEBUG  rpc             : ChannelSetup: creating application FIFO [/opt/mango/bosp/var/16954_nw_sample]...
+15:20:08,868 - DEBUG  rpc             : ChannelSetup: application FIFO created
+15:20:08,868 - DEBUG  rpc             : ChannelSetup: opening application FIFO (R/W)...
+15:20:08,868 - DEBUG  rpc             : ChannelSetup: application FIFO open
+15:20:08,868 - DEBUG  rpc             : ChannelSetup: setting application FIFO permissions [402]...
+15:20:08,868 - DEBUG  rpc             : ChannelSetup: FIFO permissions updated
+15:20:08,868 - DEBUG  rpc             : _Init: starting channel thread...
+15:20:08,868 - DEBUG  rpc             : ChannelPair: pairing FIFO channels [app_name: nw_sample, app_fifo: 16954_nw_sample]
+15:20:08,868 - DEBUG  rpc             : Tx [APP_PAIR] Request FIFO_HDR [sze: 88, off: 36, typ: 0], RPC_HDR [typ: 0, pid: 16954, eid: 0], Bytes: 88...
+
+15:20:08,868 - DEBUG  rpc             : ChannelTrd [PID: 16955] START
+15:20:08,868 - DEBUG  rpc             : Waiting for FIFO header...
+15:20:08,868 - DEBUG  rpc             : ChannelPair: waiting for daemon response...
+15:20:08,868 - DEBUG  rpc             : Rx FIFO_HDR [sze: 24, off: 4, typ: 2]
+15:20:08,868 - DEBUG  rpc             : APP_RESP
+15:20:08,868 - DEBUG  rpc             : Notify response [0]
+15:20:08,868 - DEBUG  rpc             : Waiting for FIFO header...
+15:20:08,869 - DEBUG  rpc             : ChannelPair: daemon response: 0
+15:20:08,869 - DEBUG  rpc             : Initialize: libcgroup...
+15:20:08,869 - DEBUG  rpc             : Initialize: DONE
+15:20:08,869 - DEBUG  rtl             : RTLIB_Init: initialized [tid=16954]
+15:20:08,869 - INFO   exc             : Initializing a new EXC [nw_sample]...
+15:20:08,869 - INFO   rpc             : Registering EXC [nw_sample]...
+15:20:08,871 - DEBUG  rpc             : _Register: EXC [16954:0:nw_sample:2]...
+15:20:08,871 - DEBUG  rpc             : Tx [EXC_REGISTER] Request FIFO_HDR [sze: 120, off: 4, typ: 9], RPC_HDR [typ: 9, pid: 16954, eid: 0], Bytes: 120...
+
+15:20:08,871 - DEBUG  rpc             : _Register: waiting for daemon response...
+15:20:08,878 - DEBUG  rpc             : Rx FIFO_HDR [sze: 24, off: 4, typ: 12]
+15:20:08,878 - DEBUG  rpc             : EXC_RESP
+15:20:08,878 - DEBUG  rpc             : Notify response [0]
+15:20:08,878 - DEBUG  rpc             : Waiting for FIFO header...
+15:20:08,878 - DEBUG  rpc             : EXC  <= Registered [0:nw_sample]
+15:20:08,878 - INFO   actrl           : Init: controller initialized
+2020-06-30 15:20:08,883 INFO [default] gnemu_init_logger: configuration file: /opt/mango/etc/libgn.conf
+2020-06-30 15:20:08,887 INFO [default] Default configuration
+2020-06-30 15:20:08,887 INFO [default] num clusters 1
+2020-06-30 15:20:08,887 INFO [default] memory: cluster 0, size 4294967296
+15:20:08,887 - DEBUG  libmango        : Loading GN kernel
+15:20:08,889 - DEBUG  libmango        : Kernel GN file [/opt/mango/usr/local/share/nw_kernel/nw_opencl_dev] loaded
+15:20:08,890 - DEBUG  libmango        : Wait state 2: id 5 phy_addr 0x00000000
+15:20:08,890 - DEBUG  libmango        : Wait state 2: id 6 phy_addr 0x00000000
+T[1] input buffers=2
+T[1] output buffers=1
+15:20:08,891 - INFO   exc             : Task-graph [uid=542528] file:</tmp//TG_16954:nw_sample>  sem:</16954.nw_sample> 
+15:20:08,891 - INFO   exc             : Semaphore open
+15:20:08,891 - INFO   exc             : SetTaskGraph: task-graph successfully set
+15:20:08,891 - DEBUG  actrl           : GetResourceAllocation: task-graph set
+15:20:08,891 - INFO   exc             : Enabling EXC [nw_sample] (@0x56102e2b2390)...
+15:20:08,891 - DEBUG  rpc             : _Enable: EXC [16954:0]...
+15:20:08,891 - DEBUG  rpc             : Tx [EXC_START] Request FIFO_HDR [sze: 20, off: 4, typ: 5], RPC_HDR [typ: 5, pid: 16954, eid: 0], Bytes: 20...
+
+15:20:08,891 - DEBUG  rpc             : _Enable: waiting for daemon response...
+15:20:08,894 - DEBUG  rpc             : Rx FIFO_HDR [sze: 24, off: 4, typ: 12]
+15:20:08,894 - DEBUG  rpc             : EXC_RESP
+15:20:08,894 - DEBUG  rpc             : Notify response [0]
+15:20:08,894 - DEBUG  rpc             : Waiting for FIFO header...
+15:20:08,894 - DEBUG  rpc             : EXC  <= Enabled [0:nw_sample]
+15:20:08,894 - DEBUG  rpc             : AWM  <= Invalid [0:nw_sample]
+15:20:08,894 - DEBUG  rpc             : AWM  <= NOT Assigned [0:nw_sample]
+15:20:08,894 - DEBUG  actrl           : GetResourceAllocation: execution started
+15:20:08,894 - DEBUG  exc             : ControlLoop: initialization completed
+15:20:08,894 - DEBUG  exc             : CL 0. Setup EXC [nw_sample]...
+15:20:08,894 - INFO   exc             : onSetup: Task-graph synchronization event_id = 4
+15:20:08,895 - INFO   exc             : Task-graph sent for resource allocation
+15:20:08,895 - INFO   exc             : onSetup: [Application nw_sample] starting...
+15:20:08,895 - INFO   rpc             : Performance counters monitoring is disabled
+15:20:08,895 - DEBUG  rpc             : GetWorkingMode: tracking control thread PID [16958] for EXC [0]...
+15:20:08,895 - DEBUG  rpc             : GetWorkingMode: looking for assigned AWM...
+15:20:08,895 - DEBUG  rpc             : GetAssignedWorkingMode: sync mode? no
+15:20:08,895 - DEBUG  rpc             : GetAssignedWorkingMode: valid AWM? no
+15:20:08,895 - DEBUG  rpc             : GetWorkingMode: AWM not assigned,  sending schedule request to RTRM...
+15:20:08,895 - DEBUG  rpc             : _ScheduleRequest: Schedule request for EXC [16954:0]...
+15:20:08,895 - DEBUG  rpc             : Tx [EXC_SCHEDULE] Request FIFO_HDR [sze: 20, off: 4, typ: 4], RPC_HDR [typ: 4, pid: 16954, eid: 0], Bytes: 20...
+
+15:20:08,895 - DEBUG  rpc             : _ScheduleRequest: Waiting BBQUE response...
+15:20:08,895 - DEBUG  rpc             : Rx FIFO_HDR [sze: 24, off: 4, typ: 12]
+15:20:08,895 - DEBUG  rpc             : EXC_RESP
+15:20:08,895 - DEBUG  rpc             : Notify response [0]
+15:20:08,895 - DEBUG  rpc             : Waiting for FIFO header...
+15:20:08,895 - DEBUG  rpc             : GetWorkingMode: waiting for assigned AWM...
+15:20:08,895 - DEBUG  rpc             : WaitForWorkingMode: AWM not assigned yet
+15:20:08,895 - DEBUG  rpc             : AWM  <= Waiting [0:nw_sample]
+15:20:08,949 - DEBUG  rpc             : Rx FIFO_HDR [sze: 24, off: 4, typ: 17]
+15:20:08,949 - DEBUG  rpc             : BBQ_SYNCP_PRECHANGE
+15:20:08,949 - DEBUG  rpc             : SYNC <= Enter [0:nw_sample]
+15:20:08,949 - DEBUG  rpc             : SYNC <= Pending [0:nw_sample]
+15:20:08,949 - DEBUG  rpc             : AWM  <= Invalid [0:nw_sample]
+15:20:08,949 - DEBUG  rpc             : AWM  <= NOT Assigned [0:nw_sample]
+15:20:08,949 - DEBUG  rpc             : SyncP_PreChangeNotify: assigned resources from system 0
+15:20:08,949 - INFO   rpc             : SyncP_1 (Pre-Change) EXC [0], Action [0], Assigned AWM [1]
+15:20:08,949 - DEBUG  rpc             : SyncP_1 (Pre-Change) EXC [0], Action [0], Assigned PROC=<100>
+15:20:08,949 - DEBUG  rpc             : SyncP_1 (Pre-Change) EXC [0], SyncLatency [0]
+15:20:08,949 - DEBUG  rpc             : _SyncpPreChangeResp: EXC [16954:0] latency [0]...
+15:20:08,949 - DEBUG  rpc             : Tx [BBQ_SYNCP_PRECHANGE_RESP] Request FIFO_HDR [sze: 28, off: 4, typ: 20], RPC_HDR [typ: 20, pid: 16954, eid: 0], Bytes: 28...
+
+15:20:08,949 - INFO   rpc             : SyncP_3 (Do-Change) EXC [0]
+15:20:08,949 - DEBUG  rpc             : EXC  <= UnBlocked [0:nw_sample]
+15:20:08,949 - DEBUG  rpc             : AWM  <= Assigned [0:nw_sample]
+15:20:08,949 - DEBUG  rpc             : Waiting for FIFO header...
+15:20:08,949 - DEBUG  rpc             : AWM  <= NOT Waiting [0:nw_sample]
+15:20:08,949 - DEBUG  rpc             : WaitForWorkingMode: updating resource assignments
+15:20:08,949 - DEBUG  rpc             : AWM  <= Valid [0:nw_sample:1]
+15:20:08,950 - DEBUG  rpc             : Setup stats for AWM [1]
+15:20:08,951 - DEBUG  rpc             : [nw_sample:00] <------------- AWM [01] --
+15:20:08,951 - DEBUG  rpc             : GetWorkingMode: event = 23
+15:20:08,951 - DEBUG  exc             : CL 2. Reconfigure check for EXC [nw_sample]...
+15:20:08,951 - DEBUG  exc             : CL 2-2. Switching EXC [nw_sample] to AWM [01]...
+15:20:08,951 - DEBUG  exc             : << Default resume of EXC [nw_sample], latency 10[ms] >>
+15:20:08,951 - DEBUG  rpc             : ===> NotifyConfigure
+15:20:08,951 - DEBUG  rpc             : NotifyPreConfigure - OCL Device: -2
+15:20:08,952 - INFO   exc             : Task-graph restored after resource allocation
+15:20:08,952 - INFO   exc             : onConfigure: Resource allocation performed
+15:20:08,952 - INFO   exc             : onConfigure: Waiting for tasks to start...
+15:20:08,952 - DEBUG  exc             : Tasks stopped: 00000000000000000000000000000010
+15:20:08,952 - INFO   actrl           : GetResourceAllocation: resource allocation performed
+15:20:08,952 - DEBUG  libmango        : Writing on an event: phy_addr 0xda4, value 2, id 6 cluster 0
+15:20:08,952 - DEBUG  libmango        : Writing on an event: phy_addr 0xda0, value 2, id 5 cluster 0
+15:20:08,952 - DEBUG  libmango        : Writing on an event: phy_addr 0xd9c, value 2, id 4 cluster 0
+15:20:08,952 - DEBUG  libmango        : FIFOBuffer::synch_write: id=1 mem_tile=0 cluster_id=0 phy_addr=0x0 size=1156
+
+15:20:08,953 - DEBUG  libmango        : Writing on an event: phy_addr 0xda4, value 1, id 6 cluster 0
+15:20:08,952 - DEBUG  libmango        : Local Memory Manager initializing...
+15:20:08,953 - DEBUG  libmango        : TLB Information
+15:20:08,953 - DEBUG  libmango        :  -> PEAK Base virtual address for shared data: 0x50000000
+15:20:08,953 - DEBUG  libmango        :  -> PEAK Base virtual address for events: 0x5e000000
+15:20:08,953 - DEBUG  libmango        :  -> PEAK Base virtual address for kernels: 0x30000000
+15:20:08,953 - DEBUG  libmango        :  -> PEAK Default entry nr. peakos/kernel/events/others: 0/1/2/3+
+15:20:08,952 - DEBUG  libmango        : FIFOBuffer::synch_write: id=2 mem_tile=0 cluster_id=0 phy_addr=0x484 size=1156
+
+15:20:08,953 - DEBUG  libmango        : Writing on an event: phy_addr 0xda0, value 1, id 5 cluster 0
+15:20:08,953 - NOTICE libmango        : Simulated GN mode
+15:20:08,953 - INFO   libmango        : Mapped kernel image. [tile=4, mem_bank=0, phy_addr=(nil), virt_addr=0x30000000, size=0]
+15:20:08,953 - DEBUG  libmango        : Adding TLB entry for event 0 address 0xd8c
+15:20:08,953 - DEBUG  libmango        : Adding TLB entry for event 0 address 0xd8c
+15:20:08,953 - DEBUG  libmango        : Adding TLB entry for event 1 address 0xd90
+15:20:08,953 - DEBUG  libmango        : Adding TLB entry for event 1 address 0xd90
+15:20:08,953 - DEBUG  libmango        : Adding TLB entry for event 2 address 0xd94
+15:20:08,953 - DEBUG  libmango        : Adding TLB entry for event 2 address 0xd94
+15:20:08,953 - DEBUG  libmango        : Adding TLB entry for event 3 address 0xd98
+15:20:08,953 - DEBUG  libmango        : Adding TLB entry for event 3 address 0xd98
+15:20:08,953 - DEBUG  libmango        : Adding TLB entry for event 4 address 0xd9c
+15:20:08,953 - DEBUG  libmango        : Adding TLB entry for event 5 address 0xda0
+15:20:08,953 - DEBUG  libmango        : Adding TLB entry for event 6 address 0xda4
+15:20:08,953 - NOTICE libmango        : No TLB configuration for GN architecture
+15:20:08,953 - DEBUG  libmango        : Kernel id=1: event id=1
+15:20:08,953 - DEBUG  libmango        : Adding TLB entry for event 1 address 0xd90
+15:20:08,953 - DEBUG  libmango        : Kernel id=1: event id=2
+15:20:08,953 - DEBUG  libmango        : Adding TLB entry for event 2 address 0xd94
+15:20:08,953 - DEBUG  libmango        : Kernel id=1: event id=3
+15:20:08,953 - DEBUG  libmango        : Adding TLB entry for event 3 address 0xd98
+15:20:08,953 - DEBUG  libmango        : Wait state 1: id 4 phy_addr 0x00000d9c
+15:20:08,953 - DEBUG  exc             : Stopped tasks: 00000000000000000000000000000000
+15:20:08,953 - DEBUG  exc             : Starting queue: 1
+15:20:08,953 - INFO   exc             : StartTask: [Task  1] launched
+15:20:08,953 - INFO   actrl           : NotifyTaskStart: <task 1> start notified
+15:20:08,953 - DEBUG  libmango        : Write image into memory to tile 0 address 0x0
+15:20:08,953 - INFO   exc             : onConfigure: Tasks queue length: 1
+2020-06-30 15:20:08,954 INFO [default] num clusters 1
+15:20:08,954 - DEBUG  libmango        : Argument string: /opt/mango/usr/local/share/nw_kernel/nw_opencl_dev 0x100000000 0xd8c 0xd90 0xd94 0xd98 0x484 0x0 0x9...
+15:20:08,954 - DEBUG  libmango        : Writing on an event: phy_addr 0xd8c, value 0, id 0 cluster 0
+ARG STRING: /opt/mango/usr/local/share/nw_kernel/nw_opencl_dev 0x100000000 0xd8c 0xd90 0xd94 0xd98 0x484 0x0 0x908 11 5 0xd9c
+15:20:08,954 - INFO   exc             : onConfigure: [Task  1] started on processor 4
+15:20:08,954 - INFO   exc             : onConfigure: All tasks have been launched
+15:20:08,958 - DEBUG  rpc             : <=== NotifyConfigure
+15:20:08,958 - INFO   exc             : [Task  1] profiling started
+15:20:08,958 - DEBUG  rpc             : First cycle: applying all resource budget.
+15:20:08,958 - DEBUG  rpc             : Pre-Run: Starting computing CPU quota
+15:20:08,958 - DEBUG  libmango        : Wait state 1: id 0 phy_addr 0x00000d8c
+15:20:08,958 - DEBUG  rpc             : GetWorkingMode: looking for assigned AWM...
+15:20:08,958 - DEBUG  rpc             : UpdateStatistics: update current AWM profiling...
+system(/opt/mango/usr/local/share/nw_kernel/nw_opencl_dev 0x100000000 0xd8c 0xd90 0xd94 0xd98 0x484 0x0 0x908 11 5 0xd9c);
+15:20:08,958 - DEBUG  rpc             : SYNC <= Done [0:nw_sample:1]
+15:20:08,958 - DEBUG  rpc             : GetWorkingMode: status synchonized
+15:20:08,958 - DEBUG  exc             : CL 2. Reconfigure check for EXC [nw_sample]...
+15:20:08,958 - DEBUG  exc             : CL 2-1. Continue to run on the assigned AWM [1] for EXC [nw_sample]
+15:20:08,958 - DEBUG  exc             : CL 3. Run EXC [nw_sample], cycle [0000000001], AWM[01]...
+15:20:08,958 - DEBUG  rpc             : Pre-Run: retrieving execution context info
+15:20:08,958 - DEBUG  rpc             : Pre-Run: Checking if perf counters are activated
+15:20:08,958 - INFO   exc             : onRun: [c=00]...
+/home/luca/mangolibs/libmango/dev/src/gn/mango_hn_gn.c mango_gn_init 39: Memory address: 0x7fd237734000
+/home/luca/mangolibs/libmango/dev/src/gn/mango_hn_gn.c mango_gn_init 49: Return event address: 0x7fd237734d8c
+/home/luca/mangolibs/libmango/dev/src/gn/mango_hn_gn.c mango_gn_init 50: Task event address: 0x7fd237734d90
+/home/luca/mangolibs/libmango/dev/src/gn/mango_hn_gn.c mango_gn_init 51: Barrier event address: 0x7fd237734d94
+/home/luca/mangolibs/libmango/dev/src/gn/mango_hn_gn.c mango_gn_init 52: Release event address: 0x7fd237734d98
+15:20:08,962 - DEBUG  exc             : [Event  4] notified
+15:20:08,962 - DEBUG  exc             : [Event  6] notified
+15:20:08,962 - DEBUG  exc             : [Event  5] notified
+15:20:08,962 - INFO   exc             : StopTask: [Task  1] stopped
+15:20:08,962 - INFO   exc             : onRun: [c=00] sync_event: 4
+15:20:08,962 - DEBUG  rpc             : Post-Run: retrieving execution context info
+15:20:08,962 - INFO   actrl           : NotifyTaskStop: <task 1> stop notified
+15:20:08,962 - DEBUG  rpc             : Post-Run: Checking if perf counters are activated
+15:20:08,962 - DEBUG  rpc             : Post-Run: update CPU usage information
+15:20:08,962 - DEBUG  rpc             : UpdateCPUBandwidthStats: TKS: prev=1717978157 curr=1717978157 SYS: prev=6 curr=6 USR: prev=9 curr=10 
+15:20:08,962 - DEBUG  rpc             : UpdateCPUBandwidthStats: ticks:0 sys:0 usr:1
+15:20:08,962 - DEBUG  rpc             : UpdateCPUBandwidthStats: waiting for more ticks...
+15:20:08,962 - DEBUG  rpc             : PostRun: CPU bandwidth info not available
+15:20:08,962 - DEBUG  exc             : CL 4. Monitor EXC [nw_sample]...
+15:20:08,962 - DEBUG  rpc             : ===> NotifyMonitor
+15:20:08,962 - INFO   exc             : onMonitor: [Task  1] execution time  = -nan us (mean)
+15:20:08,962 - INFO   exc             : onMonitor: [Task  1] throughput      = 0.00 CPS
+15:20:08,962 - INFO   exc             : onMonitor: Task-graph throughput     = 0.00 CPS
+15:20:08,963 - INFO   exc             : onMonitor: Task-graph execution time = 0 ms
+15:20:08,963 - DEBUG  exc             : [Task 1] timing current = 4713.27 us
+15:20:08,963 - INFO   exc             : [Task  1] profiling stopped
+*********************************
+** NW_OPENCL: Computation Done **
+*********************************
+15:20:08,963 - INFO   exc             : Waiting for EXC [nw_sample] control loop termination...
+15:20:08,963 - INFO   exc             : Task-graph sent for resource allocation
+15:20:08,963 - DEBUG  rpc             : <=== NotifyMonitor
+15:20:08,963 - DEBUG  libmango        : FIFOBuffer::synch_read: id=3 mem_tile=0 cluster_id=0 phy_addr=0x908 size=1156
+
+15:20:08,963 - DEBUG  rpc             : NotifyPostMonitor: update runtime profiling...
+15:20:08,963 - DEBUG  rpc             : ComputeGoalGap: no cycle time samples. Skipping...
+15:20:08,963 - DEBUG  libmango        : Writing on an event: phy_addr 0xd9c, value 2, id 4 cluster 0
+15:20:08,963 - NOTICE rpc             : ForwardRuntimeProfile: [nw_sample] {GAP: 0.00, CPU: 0.00 (round=0), Cycle-time: 0.00 ms}
+15:20:08,963 - DEBUG  rpc             : _RTNotify: Set Goal-Gap for EXC [16954:0]...
+15:20:08,963 - DEBUG  rpc             : _RTNotify: Waiting BBQUE response...
+15:20:08,963 - DEBUG  rpc             : GetWorkingMode: looking for assigned AWM...
+15:20:08,963 - DEBUG  rpc             : UpdateStatistics: update current AWM profiling...
+15:20:08,963 - DEBUG  rpc             : SyncTimeEstimation: update current AWM profiling...
+15:20:08,963 - DEBUG  rpc             : Cycle time:      5.239[ms] (     5.239 without sleeps) for EXC [nw_sample:00]
+15:20:08,963 - DEBUG  rpc             : SYNC <= Done [0:nw_sample:1]
+15:20:08,963 - DEBUG  rpc             : GetWorkingMode: status synchonized
+15:20:08,963 - DEBUG  exc             : CL 2. Reconfigure check for EXC [nw_sample]...
+15:20:08,963 - DEBUG  exc             : CL 2-1. Continue to run on the assigned AWM [1] for EXC [nw_sample]
+15:20:08,963 - DEBUG  exc             : CL 3. Run EXC [nw_sample], cycle [0000000002], AWM[01]...
+15:20:08,963 - DEBUG  rpc             : Pre-Run: retrieving execution context info
+15:20:08,963 - DEBUG  rpc             : Pre-Run: Checking if perf counters are activated
+15:20:08,963 - INFO   exc             : onRun: [c=01]...
+15:20:08,963 - INFO   exc             : onRun: Termination...
+15:20:08,963 - INFO   exc             : Disabling control loop for EXC [nw_sample] (@0x56102e2b2390)...
+15:20:08,963 - INFO   exc             : Disabling EXC [nw_sample] (@0x56102e2b2390)...
+15:20:08,963 - DEBUG  rpc             : _Disable: EXC [16954:0]...
+15:20:08,963 - DEBUG  rpc             : Tx [EXC_STOP] Request FIFO_HDR [sze: 20, off: 4, typ: 8], RPC_HDR [typ: 8, pid: 16954, eid: 0], Bytes: 20...
+
+15:20:08,964 - DEBUG  rpc             : _Disable: waiting for daemon response...
+15:20:08,968 - DEBUG  rpc             : Rx FIFO_HDR [sze: 24, off: 4, typ: 12]
+15:20:08,968 - DEBUG  rpc             : EXC_RESP
+15:20:08,968 - DEBUG  rpc             : Notify response [0]
+15:20:08,968 - DEBUG  rpc             : Waiting for FIFO header...
+15:20:08,968 - DEBUG  rpc             : Disable: [nw_sample] disable message sent
+15:20:08,968 - DEBUG  rpc             : EXC  <= Disabled [0:nw_sample]
+15:20:08,968 - DEBUG  rpc             : AWM  <= Invalid [0:nw_sample]
+15:20:08,968 - DEBUG  rpc             : AWM  <= NOT Assigned [0:nw_sample]
+15:20:08,968 - DEBUG  exc             : ControlLoop: EXC [nw_sample] disabled
+15:20:08,968 - DEBUG  exc             : CL 5. Release EXC [nw_sample]...
+15:20:08,968 - INFO   exc             : onRelease: notifying event 0 to unlock
+15:20:08,968 - DEBUG  exc             : [Event  0] notified
+15:20:08,968 - INFO   exc             : onRelease: notifying event 1 to unlock
+15:20:08,968 - DEBUG  exc             : [Event  1] notified
+15:20:08,968 - INFO   exc             : onRelease: notifying event 2 to unlock
+15:20:08,968 - DEBUG  exc             : [Event  2] notified
+15:20:08,968 - INFO   exc             : onRelease: notifying event 3 to unlock
+15:20:08,968 - DEBUG  exc             : [Event  3] notified
+15:20:08,968 - INFO   exc             : onRelease: notifying event 4 to unlock
+15:20:08,968 - DEBUG  exc             : [Event  4] notified
+15:20:08,968 - INFO   exc             : onRelease: notifying event 5 to unlock
+15:20:08,968 - DEBUG  exc             : [Event  5] notified
+15:20:08,968 - INFO   exc             : onRelease: notifying event 6 to unlock
+15:20:08,968 - DEBUG  exc             : [Event  6] notified
+15:20:08,968 - INFO   exc             : onRelease: Monitoring thread joined
+15:20:08,968 - NOTICE exc             : ==============+==========+=======================================+========================================
+15:20:08,968 - NOTICE exc             : | Application            |           Completion time (ms)        |         Avg. Throughput (CPS)         |
+15:20:08,968 - NOTICE exc             : --------------+----------+---------------------------------------+---------------------------------------|
+15:20:08,968 - NOTICE exc             : | nw_sample              |                                   5   |                                0.00   |
+15:20:08,968 - NOTICE exc             : ==============+==========+=======================================+========================================
+15:20:08,968 - DEBUG  exc             : ControlLoop: EXC [nw_sample] release
+15:20:08,968 - DEBUG  exc             : ControlLoop: EXC [nw_sample] notified exit
+15:20:08,969 - DEBUG  exc             : ControlLoop: EXC [nw_sample] TERMINATED
+15:20:08,969 - DEBUG  actrl           : [nw_sample] closing the controller...
+[DBG] RTLIB_Exit: thread tid=16954 terminating...
+[DBG] RTLIB_Exit: unregistering all the contexts...
+15:20:08,969 - INFO   rpc             : UnregisterAll: unregistering execution contexts...
+15:20:08,969 - DEBUG  rpc             : _Unregister: EXC [16954:0:nw_sample]...
+15:20:08,969 - DEBUG  rpc             : Tx [EXC_UNREGISTER] Request FIFO_HDR [sze: 52, off: 4, typ: 11], RPC_HDR [typ: 11, pid: 16954, eid: 0], Bytes: 52...
+
+15:20:08,970 - DEBUG  rpc             : _Unregister: waiting for daemon response....
+15:20:08,970 - DEBUG  rpc             : Rx FIFO_HDR [sze: 24, off: 4, typ: 12]
+15:20:08,971 - DEBUG  rpc             : EXC_RESP
+15:20:08,971 - DEBUG  rpc             : Notify response [0]
+15:20:08,971 - DEBUG  rpc             : Waiting for FIFO header...
+15:20:08,971 - DEBUG  rpc             : EXC  <= Unregistered [0:nw_sample]
+[DBG] BbqueRPC_FIFO_Client dtor
+[DBG] Releasing FIFO RPC channel
+[DBG] Tx [APP_EXIT] Request FIFO_HDR [sze: 20, off: 4, typ: 1], RPC_HDR [typ: 1, pid: 16954, eid: 0], Bytes: 20...
+
+[DBG] Rx FIFO_HDR [sze: 20, off: 4, typ: 1]
+[DBG] ChannelTrd [PID: 16955] END
