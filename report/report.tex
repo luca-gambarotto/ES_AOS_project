@@ -132,10 +132,10 @@ This project is aimed at coding and building a complete sample application using
 \section{Introduction}
 
 \subsection{The objective}
-The main objective of the present project is to provide a complete and clear implementation of an application developed using the OpenCL libraries provided by Mango. The main idea that guided the development was to produce a sort of "scaffolding" that will allow developers to easily develop different applications using the same libraries.
+The objective of the present project is to provide a complete and clear to understand implementation of an application developed using the OpenCL libraries provided by Mango. The main idea that guided the development was to produce a sort of "scaffolding" that will allow developers to easily develop different applications starting from the functions implemented is this project.
 
 \subsection{The Needleman-Wunsch algorithm}
-The Needleman-Wunsch algorithm is used to compare two sequences of symbols and find out how much similar they are, using a specific metric and similarity values. It is particularly useful in bioinformatics, to compare and align sequences of proteins or nucleotides. It is largely used in the development of vaccines and in the monitoring of the evolution of viruses.\\The original version proposed was not meant to be parallelized. During the years, seen the benefit of its use, some improvements have been proposed. The original sample, developed both for OpenCL and Cuda and included in the Rodinia Benchmark Suite, is a limited and simplified version that allows to exploit multi-processor computation.\\For futher details about the NW algorithm see the document\cite{nw} in the reference section.
+The Needleman-Wunsch algorithm is used to compare two sequences of symbols and find out how much similar they are, using specific metrics and similarity values. It is particularly useful in bioinformatics, to compare and align sequences of proteins or nucleotides. It is largely used in the development of vaccines and in the monitoring of the evolution of viruses.\\The original version proposed was not meant to be parallelized. During the years, seen the benefit of its use, some improvements have been proposed. The original sample, developed both for OpenCL and Cuda and included in the Rodinia Benchmark Suite, is a limited and simplified version that allows to exploit multi-processor computation.\\For futher details about the NW algorithm see the document\cite{nw} in the reference section.
 
 \section{Design and Implementation}
 
@@ -195,8 +195,8 @@ The development of this sample and the finished sample itself can be analyzed in
 \subsection{Performances}
 For what the performaces of the new code compared to the original OpenCL version are concerned, considerations can be carried on (or, at least, a comparison can be supposed) on two different areas:
 \begin{itemize}
-      \item Pure speed (in terms of milliseconds needed to complete the task): since the original OpenCL implementation is quite limited (only short sequences can be compared) no valuable estimation of the execution time can be measured.
-      \item Flexibility of the code: while the original sample, without modifications, was only able to run comparison of sequences of at most 256 charecters before run out of resources on my thesting machine (equipped with an old but still efficient Intel Sandy Bridge processor) the ported sample is able to run also with longer sequences (here, as a proof, is attached the log for a sequence of 1024 characters, but I was able to complete the execution also on longer sequences). This means that, on a comparable code complexity, the Mango framework (OpenCL implementation and backend BarbequeRTRM) is able to solve problems that are quantitatively more complex (i.e. problems related with bigger matrices).
+      \item Pure speed (in terms of milliseconds needed to complete the task): unfortunetely, since the original OpenCL implementation is quite limited on low-end devices (e.g. only short sequences can be compared on a modern desktop processor), no valuable estimation of the execution time can be measured.
+      \item Flexibility of the code: while the original sample, without modifications, was only able to run comparison of sequences of at most 256 charecters before run out of resources on my thesting machine (equipped with an old but still efficient Intel Sandy Bridge processor) the ported sample is able to run also with longer sequences (as a proof you can find in the git repository\cite{github} the log for a sequence of 1024 characters, but I was able to complete the execution also on longer sequences). This means that, on a comparable code complexity, the Mango framework (OpenCL implementation and backend BarbequeRTRM) is able to solve problems that are quantitatively more complex (i.e. problems related with bigger matrices).
 \end{itemize}
 
 
@@ -209,13 +209,12 @@ Considering the outcome of the project not only the finished code but also the p
 
 
 \section{Conclusions}
-\subsection{Addititional topics covered}
-Beside the development of the raw code, this project allowed me to learn (or, at least, to get a glance and study) the following topics:
+While not conclusive on a pure performance side, also due to the limited hardware available, the sample clearly shows several benefits of using Mango w.r.t. the device-specific implementation of the OpenCl libraries.\\Furthermore, beside the development of the raw code and from a more personal point of view, this project allowed me to learn (or, at least, to get a glance and study) the following additional topics:
 \begin{itemize}
       \item High-performance hardware: since the original topic for the project, changed due to the pandemic, was related to a high-performance computing board with an integrated hardware accelerator (the Parallelaboard), I spent some weeks digging in the documentation provided by Adapteva.
       Even if this provided to be superfluous in the end, allowed me to grasp some concepts that turned out to be useful anyway. E.g. the way the data exchange between the host processor and the accelerator turned out to be very similar to what is the behavior of OpenCL. Furthermore the concept of using two different pieces of the code, one for the orchestrator (the host) and one for the device (the accelerator) allowed me to better understand what kernels are in OpenCL.
       \item OpenCL: to fully understand the original code of the sample I took to opportunity to deepen this topic. Even if Mango libraries are quite different w.r.t. the plain OpenCL, especially for what the kernels are concerned, I made several trials on OpenCL too, to add basic concepts of this framework in my background\cite{oclmanual}.
-      \item Kconfig and CMake: despite being marginal in the development of the core project I had the opportunity of taking a grasp of these two tools.
+      \item Kconfig and CMake: despite being marginal in the development of the core project I had the opportunity of taking a grasp of these two tools/languages.
 \end{itemize}
 
 
@@ -241,6 +240,9 @@ Before the Covid pandemic outbreak, and the consequent change in the topic of th
             \textit{The Needleman-Wunsch algo. for sequence alignment},
             \url{https://www.cs.sjsu.edu/~aid/cs152/NeedlemanWunsch.pdf}
 
+      \bibitem{github}
+            \textit{Project repository},
+            \url{https://github.com/luca-gambarotto/ES_AOS_project}
 
       \bibitem{pb1}
             \textit{ParallelaBoard SDK manual},
